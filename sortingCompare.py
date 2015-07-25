@@ -23,7 +23,7 @@ def gen_input(n):
 
 
 if __name__ == '__main__':
-    input_dim = np.arange(5, 100, 5)
+    input_dim = np.arange(500, 3000, 500)
     brute_force_time = []
     merge_sort_time = []
     for dim in input_dim:
