@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Puzzle: String Theory</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<body>
+
+<p class="subtle"><a href="/">&#xab; Boston Python puzzles</a></p>
+
+<h1>String Theory</h1>
+
+<p>Damn! You just put a crucial document through your paper shredder. It was a
+passage from Moby Dick that you wanted to share with a friend in medical
+school. You managed to salvage some bits of paper from the shredder with these
+words (in random order):</p>
+
+<pre>
+into his same should through had like with out which a down they great and were so not the
+</pre>
+
+<p>Well, these words should be enough to find the passage, which was definitely
+less than 500 words long and ended with a hilarious suggestion for how to
+improve medical education.</p>
+
+<p>This might be useful: http://www.gutenberg.org/cache/epub/2701/pg2701.txt</p>
+
+<p>Now do the reverse. What is the optimal moby set for the first 500 words of
+the book? (I mean the passage that begins with 'Call me Ishmael.')</p>
+
+<p>A moby set is a set of words (ignoring capitalization and punctuation) that
+co-occur in a passage and co-occur in no other passage of equal length in a
+text, and hence those words are a unique marker for that passage. The optimal
+moby set for a passage is the set with the lowest moby score: the sum of the
+frequencies of the words in a moby set. So the optimal moby set is the set with
+the smallest number of high-frequency words that uniquely define a passage. The
+smaller the moby score, the better. For example:</p>
+
+<pre>
+{'call','me','ishmael'}
+</pre>
+
+<p>This is a valid moby set for the first 500 words of the book, because those
+3 words only co-occur in the first 500 words of the book. But it is far from
+optimal because the sum of their frequencies is relatively large, mainly
+because 'ishmael' occurs only twice in the entire book. You can express their
+frequencies by the inverse of the count of those words in the book. The moby
+score is the sum:</p>
+
+<pre>
+sum( {1.0/53, 1.0/339, 1.0/2} ) = 0.52
+</pre>
+
+<p>The optimal moby score is much closer to zero.</p>
+
+<p>(Note that you must capture all sentences that correspond to the first 500
+words, i.e. one should not need to know that one is looking for a 500-word
+passage. Rather, the moby set should uniquely correspond to the sentences that
+fit within the first 500 words of the book.)</p>
+
+<p>And finally, to take your mind off white whales, consider this puzzle:</p>
+
+<p>Cross out nine letters from 'naisnienlgeltetweorrsd' such that a single word remains. (Don't get mad!)</p>
+
+<!--
+<h2>2. Card Entropy</h2>
+<p>You will need a friend for this challenge. </p>
+<p>I give you 5 random cards from my completely normal, randomly shuffled, full deck of 52 cards. You choose 4 of these cards and give them to your friend. A
+* The first 2-person team to successfully perform this trick wins prize 2a.
+* Now write a program so that your computer can perform the trick with you. (Input is 4 cards; output is the identity of the unknown 5th card.) The first 2-p
+* If n-1 is the miminum number of cards needed to uniquely encode one card from n randomly selected cards in a single deck, what is n for m multiple decks? W
+
+
+<h2>Solutions</h2>
+
+<ul>
+<li>Haakon Chevalier's solution is on <a href="https://www.dropbox.com/sh/el7193nb6fe90ev/AAC2VGRx9dKlAANis1hwJIema">Dropbox</a></li>
+</ul>
+
+<p>If you have a solution you'd like to share see the <a href="solutions.html">Solutions page</a> for instructions.</p>
+
+-->
