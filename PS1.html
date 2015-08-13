@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0077)http://courses.csail.mit.edu/6.831/2015/handouts/ps1-translate_game/ps1.shtml -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>PS1: Implementing an HTML/Javascript Application</title>
+    <link rel="stylesheet" type="text/css" href="./PS1_files/6831.css">
+    <meta name="read-only" content="true">
+    
+    <meta name="author" content="none">
+    <style>
+
+      .flush-right {
+      position:   relative;
+      float:      right;
+      margin:     1em;
+      margin-top:     0;
+      margin-bottom:  3em;
+      }
+
+      .center-final {
+      position:   relative;
+      margin:     1em;
+      margin-top:     0;
+      margin-bottom:  3em;
+      text-align: center;
+      }
+
+      div.caption {
+      font-style: italic;
+      text-align: center;
+      }
+
+      .flush-right > img{
+      border: thin solid #a0a0a0;
+      }
+      .center-final > img{
+      border: thin solid #a0a0a0;
+      }
+
+      p.due-info{
+      border: 1px solid rgb(160, 159, 129);
+      padding: 0.5em 1em;
+      background: rgb(250, 255, 226) none repeat scroll 0% 0%;
+      }
+
+      span.html-tag {
+      font-family: monospace;
+      font-size: smaller;
+      }
+
+    </style>
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    <div id="header-pane">
+    <h1>6.813/6.831 • User Interface Design and Implementation</h1>
+    <div>
+        Spring 2015
+        Massachusetts Institute of Technology<br>
+        Department of Electrical Engineering and Computer Science<br>
+        <div id="homepage-link">
+           <a href="http://stellar.mit.edu/S/course/6/sp15/6.813/index.html">&lt;&lt; back to Stellar</a>
+        </div>
+    </div>
+</div>
+
+    <div id="body-pane">
+      <div id="content-box">
+
+        <h1>PS1: Implementing an HTML/Javascript Application</h1>
+
+        <p class="due-info">
+          Due at 11:59pm, Wednesday, February 18, 2015, by uploading your
+          submission to Stellar.<br>
+          You must complete the <a href="https://courses.csail.mit.edu/6.831/form/form.py?formkey=1OyJL0T5yw7sJ7L-dTtMjWwbXtVEfYNXFGYG5KvW18JE">self-assessment form</a> before you hand in the assignment. <br>
+          You should make sure that your problem set renders correctly on Chrome (which we'll be using for evaluating your projects) and in either Firefox or Safari.
+        </p>
+
+        <p> This problem set asks you to build a little game consisting of a user interface which asks the user to translate words from a language to another.
+	  You'll be  using the set of core technologies that drive most modern web applications, namely
+          HTML, CSS, and Javascript.
+          We specify the design of the user interface. Your job is to
+          implement it using HTML, CSS, and Javascript. You will complete a self-assessment after you complete the assignment.
+
+	  </p><div class="center-final"><img src="./PS1_files/ps1-final.png"><div class="caption">Final Application</div></div>
+
+        <p>
+        </p><p>To do this assignment, you'll need to know how to:
+          </p><ul>
+            <li>write HTML: create correct HTML pages that display in modern browsers
+            </li>
+            <li>use HTML form elements (like
+              <span class="html-tag">&lt;button&gt;</span>,
+              <span class="html-tag">&lt;input&gt;</span>) to create a web application
+            </li>
+            <li>use CSS to layout and style HTML elements
+            </li>
+            <li>use Javascript and jQuery to add event handlers and bindings to respond to user input;
+            </li>
+	    <li>use jQuery UI to augment the standard HTML <span class="html-tag">&lt;input&gt;</span> with an autocomplete feature. </li>
+          </ul>
+
+          Here are useful <a href="http://crowdy.juhokim.com/">video tutorials</a> on HTML/CSS/Javascript/jQuery/jQueryUI picked by the course staff:
+          <ul>
+            <li><a href="http://crowdy.juhokim.com/play/25/">Introduction to styling with CSS</a></li>
+            <li><a href="http://crowdy.juhokim.com/play/23/">CSS Absolute and Relative Positioning Tutorial</a></li>
+            <li><a href="http://crowdy.juhokim.com/play/24/">Making Divs Side by Side using CSS</a></li>
+            <li><a href="http://crowdy.juhokim.com/play/27/">jQuery - Introduction to Selectors</a></li>
+            <li><a href="http://crowdy.juhokim.com/play/28/">jQuery - ID Selector</a></li>
+            <li><a href="http://crowdy.juhokim.com/play/29/">jQuery - Click Event Handler</a></li>
+            <li><a href="http://crowdy.juhokim.com/play/30/">jQuery - addClass()</a></li>
+            <li><a href="http://crowdy.juhokim.com/play/31/">jQuery UI Datepicker</a></li>
+          </ul>
+
+          Here are some useful reference sources for HTML/CSS/Javascript/jQuery/jQueryUI:
+          <ul>
+            <li>
+              <a href="http://htmldog.com/">HTML Dog</a> (a fairly good guide for both HTML and CSS)
+            </li>
+            <li><a href="http://www.html.net/tutorials/css/">CSS Tutorial</a> (a tutorial for learning CSS)</li>
+            <li><a href="http://docs.jquery.com/Tutorials:How_jQuery_Works">How jQuery Works</a> (a
+              beginning tutorial on jQuery, the Javascript library we are using for this assignment)</li>
+            <li><a href="http://docs.jquery.com/">jQuery Documentation</a> (the official documentation for jQuery is an excellent resource)</li>
+	    <li><a href="http://jqueryui.com/demos/autocomplete">jQuery UI's Autocomplete Documentation</a> (jQuery UI lets you create widgets using a higher lever of abstraction than jQuery alone. For part 4, you'll need to use the jQuery UI autocomplete widget)</li>
+            <li><a href="http://proquest.safaribooksonline.com.libproxy.mit.edu/">O'Reilly Safari</a> has several e-books
+              on HTML, CSS, and Javascript that are free for MIT students to read (MIT certificate required).
+              <a href="http://proquest.safaribooksonline.com.libproxy.mit.edu/book/web-development/html/0596527403">
+                Dynamic HTML: The Definitive Reference, 3rd Edition</a>
+              is a good one to start with.
+          </li></ul>
+
+        <p></p>
+
+        <h2>Provided Resources</h2>
+        <p>We provide you with the following:
+          </p><ul>
+            <li><a href="http://courses.csail.mit.edu/6.831/2015/handouts/ps1-translate_game/ps1.zip">ps1.zip</a>: a zip file containing the code
+              you will be editing for this problem set.</li>
+          </ul>
+          In the <code>contents</code> folder of the project are the
+          following files and folders:
+          <ul>
+            <li>jquery: the code for jQuery and  jQuery UI, the Javascript libraries you will be using for this assignment.</li>
+            <li>dicts.json: a set of bilingual dictionaries, containing words without accents or capital letters, extracted from  <a href="http://www.dicts.info/uddl.php">English Wiktionary dumps</a>, in <a href="http://www.json.org/js.html">JSON notation</a>. </li>
+            <li>translate_game.html: a skeleton file for your user interface HTML code. </li>
+            <li>translate_game.css: a skeleton file for your user interface CSS code. </li>
+            <li>translate_game.js: a skeleton file for your user interface JS code. </li>
+          </ul>
+          Feel free to change these files as you see fit. You may use additional outside JavaScript libraries, but be sure to cite them in-line (include a link to the library's webpage).
+        <p></p>
+
+        <h2>1- Basic Layout (20%)</h2>
+
+        <div class="flush-right"><img src="./PS1_files/ps1-1.png"><div class="caption">Figure 1</div></div>
+
+        <p>First, build an interface that looks like Figure 1. In particular:
+	  </p><ul>
+	    <li> There should be margins of at least 10px between and around the elements.</li>
+	    <li> The instruction message on top should be quite large and aligned with the elements below it (we used Trebuchet MS for the font).</li>
+	    <li> A three-column layout should be used in order to align the row containing the labels ("Spanish", "English", "Answer"). One row containing the current entry ("espejo", an <span class="html-tag">&lt;input&gt;</span> element, and the <b>See Answer</b> button). The other rows containing the past entries (bottom). </li>
+	    <li>Create two static past entries. One for a correct translation ("calabaza", "pumpkin") using a blue font color, and a check mark (Hint: jQuery UI comes with <a href="http://jquery-ui.googlecode.com/svn/tags/latest/tests/static/icons.html">plenty of symbols</a>, and you can just inspect them to see which CSS class to use). The other for an incorrect translation ("postmodernidad",  "phone") using a red font color, crossing out the incorrect entry (Hint: think CSS...), and displaying the correct translation on the third column.</li>
+	  </ul>
+          No behavior is required to earn the points for this part, just a static layout.
+        <p></p>
+
+
+        <h2 style="clear: both">2- Adding Basic Behavior (20%)</h2>
+        <p>Improve your interface so that when the program is first run:
+
+	  </p><ul>
+	    <li>The names of the languages you need to translate from (Spanish) and to (English) should now come from variables on the JS code (namely, <code>lang_from</code> and <code>lang_to</code>). Note that jQuery makes those kind of tasks particularly easy.</li>
+	    <li>The program chooses a random word from the dictionary for the user to translate (instead of <code>espejo</code>, on figure 1)</li>
+	    <li>The <span class="html-tag">&lt;input&gt;</span> has focus, so that the user can start typing as soon as the page is loaded. </li>
+	    <li>Clicking on the <b>See Answer</b> button prompts for another word, clears the <span class="html-tag">&lt;input&gt;</span>, and returns focus to the <span class="html-tag">&lt;input&gt;</span>. Don't check if the answer was right or wrong for now: just move on to the next word.</li>
+	    <li>Note: For now, just keep your 2 static answers from part 1 in the list of previous answers </li>
+	  </ul>
+        <p></p>
+
+
+        <h2 style="clear: both">3- Displaying Answer Feedback (20%)</h2>
+
+	<p> Update your code so that when the user presses the <b>See Answer</b> button, the list of previous answers gets populated with each of the user's entries instead of the two static answers you entered in Part 1. Make sure that:
+	  </p><ul>
+	    <li>The entry which was submitted last appears <b>at the top</b> of the list.</li>
+	    <li>The program uses the styles you defined in Part 1 for correct and incorrect entries.</li>
+	    <li>When deciding whether an entry is correct, the program only performs exact matches: synonyms, capitalization differences etc... should be reported as incorrect translations.</li>
+	  </ul>
+	<p></p>
+
+        <h2 style="clear: both;">4- Adding Autocomplete (20%)</h2>
+	<div class="flush-right"><img src="./PS1_files/ps1-3.png"><div class="caption">Figure 2</div></div>
+
+        <p>
+          The input field contains the user's guess. Use jQuery UI to make this field an autocomplete widget (see Figure 2), so that:
+	  </p><ul>
+	    <li>It offers suggestions as soon as the user types two or more characters. Those selections should be the English words from the dictionary which contain the letters that the user has typed so far.</li>
+	    <li>Selecting a suggestion prompts for another word, clears the <span class="html-tag">&lt;input&gt;</span>, returns focus to the <span class="html-tag">&lt;input&gt;</span>, checks to see if the answer is correct, and populates the list of previous answers accordingly (should have the same behavior as clicking on the <b>See Answer</b> button)</li>
+	  </ul>
+        <p></p>
+
+        <h2 style="clear: both;">5- Improving usability (20%)</h2>
+        <p>  Make changes to your code so that pressing <b>enter</b> submits the user's reply even if the user didn't select a match from the autocomplete menu. Make sure that:
+	  </p><ul>
+	    <li>Pressing <b>enter</b> prompts for another word, clears the <span class="html-tag">&lt;input&gt;</span>, returns focus to the <span class="html-tag">&lt;input&gt;</span>, checks to see if the answer is correct, and populates the list of previous answers accordingly (should have the same behavior as clicking on the <b>See Answer</b> button and selecting an autocomplete suggestion)</li>
+	    <li>Pressing <b>enter</b> when selecting a item from the autocomplete menu doesn't submit that item twice (don't forget to test that behavior on several browsers).</li>
+	    <li>The autocomplete widget closes even if the user ends up not using it in order to select an item.</li>
+	  </ul>
+        <p></p>
+
+        <h2 style="clear: both;">Further (Optional) Improvements</h2>
+
+        <p>If you found this assignment easy and you're inclined to go further,
+          here are some ideas for optional improvements:</p>
+        <ul>
+	  <li>
+            Let the user choose the what language to translate from and to. The <code>dicts.json</code> file also contains dictionaries for English-French and German-Italian. If you'd like to add more choices, one possibility is to generate your own <code>dicts.json</code> file by getting <a href="http://www.dicts.info/uddl.php">more bilingual dictionary text files</a> and modify the <a href="http://courses.csail.mit.edu/6.831/2015/handouts/ps1-translate_game/parser.py">very simple parser</a> we used in order to extract those words.
+          </li>
+          <li>
+            Display the user's score. Have a timed mode so that the user can only enter words during, say, 1 minute. Display a countdown of how much time is left.
+          </li>
+          <li>
+            Highlight the matching substring of each word in the list box, so that the user can see at a glance how the word matches the query.
+          </li>
+	  <li>
+	    Use cookies to remember statistics, such as best score across multiple games. This could also be used so that words the user often gets wrong can be prompted more often in order improve memorization.
+	  </li>
+        </ul>
+
+        <h2 style="clear: both;">What to Hand In</h2>
+
+        <p>You must complete the <a href="https://courses.csail.mit.edu/6.831/form/form.py?formkey=1OyJL0T5yw7sJ7L-dTtMjWwbXtVEfYNXFGYG5KvW18JE">self-assessment form</a> before you hand in the assignment.
+        </p><p>Package your completed assignment as a zip file that contains all of
+          your HTML, JS, and CSS files (including the JSON data, jQuery, jQuery UI, and any other external libraries).
+	  <b>Failure to include all necessary files for running your program will result in a loss of points from your final grade.</b>
+    (Please test by unzipping your zip file into, say, your /tmp
+    directory, turning off your Internet connection, and then
+    opening your page to see if it still works.)
+        </p>
+        <p>List your collaborators in the comment at the top of translate_game.html, <b>or explicitly say that you discussed the assignment with nobody</b>.
+                  Collaborators are any people you discussed this assignment with, as well as any third-party libraries/example code you used.  This is
+          an individual assignment, so be aware of the course's
+          <a href="http://stellar.mit.edu/S/course/6/sp15/6.813/courseMaterial/topics/topic1/syllabus/text1/text#collaboration">
+            collaboration policy</a>.</p>
+
+
+        <p>Here's a checklist of things you should confirm before you hand in:
+          </p><ol>
+	    <li>Complete the self assessment.</li>
+	    <li>Make sure that the page renders correctly on Chrome (which we'll be using for evaluating your projects) and in either Firefox or Safari.</li>
+            <li>Make a fresh folder and unpack your zip file into it.</li>
+            <li>Make sure your collaborators are named in translate_game.html.</li>
+            <li>Make sure all assets (images, jQuery source, JS files, CSS files, etc.) used by your code are found in the fresh folder and load successfully.</li>
+          </ol>
+        <p></p>
+
+        <p>Submit your zip file on Stellar.
+        </p>
+      </div>
+    </div>
+    <div id="footer-pane">
+    <div>Send comments about this site to Rob Miller (rcm at mit.edu)<br>
+        Copyright © 2015 by Rob Miller. All rights reserved.
+    </div>
+</div>
+
+  
+
+</body></html>
